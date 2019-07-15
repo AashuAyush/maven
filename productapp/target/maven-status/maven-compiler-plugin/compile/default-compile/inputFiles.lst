@@ -1,0 +1,10 @@
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/DbUtil.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/FetchException.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/DbConfig.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/client/ListProducts.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/web/ProductServlet.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/client/AddProduct.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/PersistenceException.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/ProductDao.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/dao/ProductDaoJdbcImpl.java
+/root/training_maven/productapp/src/main/java/com/visa/prj/entity/Product.java
