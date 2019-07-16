@@ -21,32 +21,42 @@ public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter(); //opens a character stream to client browser 
-//		ServletOutputStream out = response.getOutputStream(); // opens byte stream to client
-		response.setContentType("text/html"); //MIME
-		out.print("<html><body>");
-		out.print("<h1> Products </h1>");
-		out.print("<table border ='1'>");
-		out.print("<tr><th>ID</th><th>Name</th><th>Price</th></tr>");
 		ProductDao productDao = new ProductDaoJdbcImpl();
-		
-		
 		try {
 			List<Product> prds = productDao.getProducts();
-			for (Product p : prds) {
-				out.print("<tr>");
-					out.print("<td>" + p.getId() + "</td>");
-					out.print("<td>" + p.getName() + "</td>");
-					out.print("<td>" + p.getPrice() + "</td>");
-				out.print("</tr>");
-//				System.out.println(p.getName() + " : " + p.getPrice());
-			}
+			request.setAttribute("products", prds); //saving products into products key in request object
+			//server side redirection
+			request.getRequestDispatcher("products.jsp").forward(request, response);
 		} catch (FetchException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
-		}
-		out.print("</table></body></html>");
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+			}
+		
+//		PrintWriter out = response.getWriter(); //opens a character stream to client browser 
+////		ServletOutputStream out = response.getOutputStream(); // opens byte stream to client
+//		response.setContentType("text/html"); //MIME
+//		out.print("<html><body>");
+//		out.print("<h1> Products </h1>");
+//		out.print("<table border ='1'>");
+//		out.print("<tr><th>ID</th><th>Name</th><th>Price</th></tr>");
+//		ProductDao productDao = new ProductDaoJdbcImpl();
+//		
+//		
+//		try {
+//			List<Product> prds = productDao.getProducts();
+//			for (Product p : prds) {
+//				out.print("<tr>");
+//					out.print("<td>" + p.getId() + "</td>");
+//					out.print("<td>" + p.getName() + "</td>");
+//					out.print("<td>" + p.getPrice() + "</td>");
+//				out.print("</tr>");
+////				System.out.println(p.getName() + " : " + p.getPrice());
+//			}
+//		} catch (FetchException e) {
+//			e.printStackTrace();
+//			out.println(e.getMessage());
+//		}
+//		out.print("</table></body></html>");
+////		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
